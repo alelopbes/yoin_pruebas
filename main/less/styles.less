@@ -18,7 +18,7 @@
 @orange02: #e64620;
 @orange03: #d4411d;
 
-@grey_line00: #fff8f7;
+@grey_line00: #ffffff;
 @grey_line01: #e0dad9;
 
 @background00: #fff8f7;
@@ -28,10 +28,18 @@
 
 /* ------   DEGRADADOS   --------  */
 
-.orange_gradient {
+.header_gradient {
 	
 	background-image: -moz-linear-gradient(50% 100%, @orange02, @orange01);
 	background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, from(@orange02), to(@orange01));
+
+}
+
+.footer_gradient {
+
+	background: -moz-linear-gradient(top, @orange02 0%, @orange01 7%, @orange02 99%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@orange02), color-stop(7%,@orange01), color-stop(99%,@orange02)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, @orange02 0%,@orange01 7%,@orange02 99%); /* Chrome10+,Safari5.1+ */
 
 }
 
@@ -84,11 +92,14 @@
 	height: @height;
 	top:0px;
 	left:0px;
-	.background_gradient;
+	background-image: url(../images/fondo_vacio-01.png);
+	background-repeat: repeat;
+
 
 	> #header {
+	    
 	    .abs_layout(@header-height);
-		.orange_gradient;
+		.header_gradient;
 		.border_line(@orange00 , @orange03);
 
 
@@ -113,7 +124,7 @@
 	> #footer {
 
 	    .abs_layout(@header-height, @categories-height+@header-height+@brands-height+6);
-	    .orange_gradient;
+	    .footer_gradient;
 	    .border_line(@orange03 , @orange03);
 
 	    
