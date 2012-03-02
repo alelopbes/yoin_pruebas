@@ -1,12 +1,126 @@
+
+
+/* ------   PROPORCIONES  --------  */
+
 @height: 460px;
+@width: 320px;
+
+@header-height:43px;
+@categories-height:58px;
+@brands-height:308px;
+
+
+
+/* ------   COLORES   --------  */
+
+@orange00: #ff6d4a;
+@orange01: #ff4e24;
+@orange02: #e64620;
+@orange03: #d4411d;
+
+@grey_line00: #fff8f7;
+@grey_line01: #e0dad9;
+
+@background00: #fff8f7;
+@background01: #F2EBEA;
+
+
+
+/* ------   DEGRADADOS   --------  */
+
+.orange_gradient {
+	
+	background-image: -moz-linear-gradient(50% 100%, @orange02, @orange01);
+	background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, from(@orange02), to(@orange01));
+
+}
+
+.background_gradient {
+
+	background: -moz-linear-gradient(top, @background00 0%, @background01 87%, @background00 99%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@background00), color-stop(87%,@background01), color-stop(99%,@background00)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, @background00 0%,@background01 87%,@background00 99%); /* Chrome10+,Safari5.1+ */
+
+
+}
+
+
+/* ------   BORDES   --------  */
+
+.border_line ( @color_up: white , @color_down: black ) {
+
+	border-top:  1px solid @color_up;
+	border-bottom: 1px solid @color_down;
+}
+
+
+
+
+
+
+/* ------   AJUSTES  MAQUETACIÓN --------  */
+
+.abs_layout ( @height: 100%, @top: 0px ) {
+
+	position:absolute; 
+	left: 0px;
+    width: 100%;
+
+	top: @top; 
+	height: @height; 
+
+}
+
+
+
+
+/* ------------------------------------------------------------------------------------------------------  */
+
 
 #app {
 
     position: absolute;
-	width:320px;
+	width: @width;
 	height: @height;
 	top:0px;
 	left:0px;
-	background-color:yellow;
+	.background_gradient;
+
+	> #header {
+	    .abs_layout(@header-height);
+		.orange_gradient;
+		.border_line(@orange00 , @orange03);
+
+
+	}
+
+	> #categories {
+
+	    .abs_layout(@categories-height, @header-height+2);
+	    .border_line(@grey_line01 , @grey_line01)
+		
+
+	}
+
+	> #brands {
+
+	    .abs_layout(@brands-height, @categories-height+@header-height+4);
+	    .border_line(@grey_line00 , @grey_line01)
+	    
+
+	}
+
+	> #footer {
+
+	    .abs_layout(@header-height, @categories-height+@header-height+@brands-height+6);
+	    .orange_gradient;
+	    .border_line(@orange03 , @orange03);
+
+	    
+	}
+
+
 
 }
+
+
